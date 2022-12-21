@@ -1,6 +1,6 @@
 ##### Terraform Project 1
 
-- This project allowed me to  relearning the basics of terraform infrasture provisioning on AWS by provisioning a simple EC2 instance of Ubuntu AMI and t2.micro type
+- This project allowed me to  relearning the basics of terraform infrastructure provisioning on AWS by creating a simple EC2 instance of Ubuntu AMI and t2.micro type
 - Ensured AWS CLI was installed and configured my Access key.
 - Played aound with the most commonly used terraform commands which were:
 ```

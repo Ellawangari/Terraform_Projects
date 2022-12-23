@@ -16,3 +16,6 @@ terraform destroy/ terraform destroy --auto-approve
 ```
 
 
+- The differeence btwn variable.tf and terraform.tfvars file is that for variable files it declares variables which might have a default value or not while for terraform.tfvars are where all variables are assigned values.
+- Also for the terraform.tfvars file You can't define new variables here, and can only set the values of existing ones defined in variables.tf.
+

@@ -5,17 +5,32 @@ resource "aws_instance" "testserver" {
   instance_type = "t2.micro"
   key_name      = "general"
 
+  tags = {
+
+     Name: "testserver"
+
+     }
 }
 
 
-//Create an elastic ip and asociate it with the instance
+//Create an elastic ip and associate it with the instance
 
 resource "aws_eip" "testserverip" {
-  // Associate the eip to the instance created
-  //instance_id = aws_instance.testserver.id
+  //First way to  Associate the eip to the instance created
+  instance = aws_instance.testserver.id
+
+
   // vpc = true indicates that the eip is for use in vpc
   vpc = "true"
+
+  tags ={
+
+    Name : "testservereip"
+  }
 }
+
+//Second way to associate eip with an ec2 istance is by using the  aws_eip_association resource
+
 
 //Output the eip public address
 

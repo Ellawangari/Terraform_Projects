@@ -17,7 +17,7 @@ resource "aws_instance" "testserver" {
 
 resource "aws_eip" "testserverip" {
   //First way to  Associate the eip to the instance created
-  instance = aws_instance.testserver.id
+  //instance = aws_instance.testserver.id
 
 
   // vpc = true indicates that the eip is for use in vpc
@@ -29,14 +29,25 @@ resource "aws_eip" "testserverip" {
   }
 }
 
-//Second way to associate eip with an ec2 istance is by using the  aws_eip_association resource
+//Second way to associate eip with an ec2 instance is by using the  aws_eip_association resource
+//So create the eip first the associate it with the instance benefit of using this otion is that it allows one to use pre existing elastic ips  that cannot be changed
+
+resource "aws_eip_association" "demo-eip" {
+ 
+ //id of the instance
+ instance_id = aws_instance.testserver.id
+
+ //id of the eip
+ allocation_id = aws_eip.testserverip.id
+
+}
 
 
-//Output the eip public address
+//Output the eip public address on the terminal
 
 output "eip" {
 
-  value = aws_eip.testserverip.id
+  value = aws_eip.testserverip.public_ip
 
 }
 

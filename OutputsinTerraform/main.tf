@@ -30,7 +30,7 @@ resource "aws_eip" "testserverip" {
 }
 
 //Second way to associate eip with an ec2 instance is by using the  aws_eip_association resource
-//So create the eip first the associate it with the instance benefit of using this otion is that it allows one to use pre existing elastic ips  that cannot be changed
+//So create the eip first then associate it with the instance .Benefit of using this option is that it allows one to use pre existing elastic ips  that cannot be changed
 
 resource "aws_eip_association" "demo-eip" {
  

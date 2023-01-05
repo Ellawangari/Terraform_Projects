@@ -10,6 +10,7 @@ pipeline {
          steps{
             git branch: 'terraform-Jenkins', url: 'https://github.com/Ellawangari/Terraform-Projects.git'
          }
+        }
         stage ("terraform init") {
             steps {
                 sh 'terraform init'

@@ -6,11 +6,10 @@ pipeline {
     }
 
     stages {
-        stage ("checkout from GIT") {
-            steps {
-               git 'https://github.com/Ellawangari/Terraform_Projects.git'
-            }
-        }
+        stage('Checkout SCM') {
+         steps{
+            git branch: 'terraform-Jenkins', url: 'https://github.com/Ellawangari/Terraform-Projects.git'
+         }
         stage ("terraform init") {
             steps {
                 sh 'terraform init'

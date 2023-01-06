@@ -32,7 +32,7 @@ pipeline {
         }
         stage ("terrafrom plan") {
             steps {
-                sh 'terraform plan -out=tfplan.out '
+                sh 'terraform plan -out=tfplan.out -destroy '
             }
         }
        stage("terraform show") {

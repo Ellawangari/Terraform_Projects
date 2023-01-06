@@ -8,11 +8,14 @@ pipeline {
     stages {
         stage('Checkout SCM') {
          steps{
-            git branch: 'terraform-Jenkins', url: 'https://github.com/Ellawangari/Terraform-Projects.git'
+   
+            sh  'git clone https://github.com/Ellawangari/Terraform-Projects.git'
+          
          }
         }
         stage ("terraform init") {
             steps {
+                
                 sh 'terraform init'
             }
         }
@@ -28,9 +31,16 @@ pipeline {
         }
         stage ("terrafrom plan") {
             steps {
-                sh 'terraform plan '
+                sh 'terraform plan -out=tfplan.out '
             }
         }
+       stage("terraform show") {
+           steps{
+            sh'terraform show -json tfplan.out'
+           }
+
+       }
+
         stage ("terraform apply") {
             steps {
                 sh 'terraform apply --auto-approve'

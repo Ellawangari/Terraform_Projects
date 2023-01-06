@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout SCM') {
          steps{
-   
+            //cleanWs()
             sh  'git clone https://github.com/Ellawangari/Terraform_Projects.git'
             
           
@@ -45,6 +45,23 @@ pipeline {
         stage ("terraform apply") {
             steps {
                 sh 'terraform apply --auto-approve'
+            }
+       
+        }
+
+        stage("terraform destroy"){
+          steps{
+           
+           sh 'terraform destroy --auto-approve'
+
+          }
+
+               //Clean WS once completed
+            post { 
+            always { 
+                cleanWs()
+            }
+
             }
         }
     }

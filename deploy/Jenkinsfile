@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout SCM') {
          steps{
    
-            sh  'git clone git@git.Ellawangari/Terraform-Projects.git'
+            sh  'git clone github.com/Ellawangari/Terraform-Projects.git'
             ///https://github.com/Ellawangari/Terraform-Projects.git'
           
          }

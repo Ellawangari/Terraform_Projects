@@ -30,24 +30,24 @@ pipeline {
                 sh 'terraform validate'
             }
         }
-        stage ("terrafrom plan") {
-            steps {
-                sh 'terraform plan -out=tfplan.out -destroy '
-            }
-        }
-       stage("terraform show") {
-           steps{
-            sh'terraform show -json tfplan.out'
-           }
+    //     stage ("terrafrom plan") {
+    //         steps {
+    //             sh 'terraform plan -out=tfplan.out  '
+    //         }
+    //     }
+    //    stage("terraform show") {
+    //        steps{
+    //         sh'terraform show -json tfplan.out'
+    //        }
 
-       }
+    //    }
 
-        stage ("terraform apply") {
-            steps {
-                sh 'terraform apply --auto-approve'
-            }
+    //     stage ("terraform apply") {
+    //         steps {
+    //             sh 'terraform apply --auto-approve'
+    //         }
        
-        }
+    //     }
 
         stage("terraform destroy"){
           steps{

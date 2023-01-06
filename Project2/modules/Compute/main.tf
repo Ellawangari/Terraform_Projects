@@ -4,7 +4,7 @@
 resource "aws_instance" "testserver" {
 
   ami           = "ami-0a6b2839d44d781b2"
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
   key_name      = "general"
 
   tags = {
@@ -45,13 +45,7 @@ resource "aws_eip_association" "demo-eip" {
 }
 
 
-//Output the eip public address on the terminal
 
-output "eip" {
-
-  value = aws_eip.testserverip.public_ip
-
-}
 
 
 

@@ -22,7 +22,7 @@ resource "aws_instance" "testserver" {
 
   tags = {
 
-     Name: "testserver.${count.index}"
+     Name: var.instancenames[count.index]
 
      }
 

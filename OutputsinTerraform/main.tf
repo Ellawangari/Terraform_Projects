@@ -4,7 +4,12 @@
 resource "aws_instance" "testserver" {
 
   ami           = "ami-0a6b2839d44d781b2"
-  instance_type = "t2.micro"
+
+  //refencing using maps 
+  //instance_type = var.instancetypes["us-west-1"]
+
+  //referencing using list
+  instance_type = var.instancelist[2]
   key_name      = "general"
 
   tags = {
@@ -54,4 +59,32 @@ output "eip" {
 }
 
 
+//Create a security group 
 
+resource "aws_security_group" "allow_tls" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+  # vpc_id      = aws_vpc.main.id
+//inbound rules
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = ["${aws_eip.testserverip.public_ip}/32"]
+  
+  }
+
+//Outbound rules
+  # egress {
+  #   from_port        = 0
+  #   to_port          = 0
+  #   protocol         = "-1"
+  #   cidr_blocks      = ["0.0.0.0/0"]
+  #   ipv6_cidr_blocks = ["::/0"]
+  # }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}

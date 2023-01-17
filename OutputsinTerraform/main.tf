@@ -10,13 +10,22 @@ resource "aws_instance" "testserver" {
 
   //referencing using list
   instance_type = var.instancelist[2]
+     
+
+     // Count parameter to provision 3 ec2 instances
+     count = 3 
+
+     //Count.index allows one to give each resource created a specific name unlike using count which makes all the resources have the same name
+ 
+
   key_name      = "general"
 
   tags = {
 
-     Name: "testserver"
+     Name: "testserver.${count.index}"
 
      }
+
 }
 
 

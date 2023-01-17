@@ -31,3 +31,15 @@ variable "instancenames"{
 }
 
 variable "istest" {}
+
+locals {
+  commontags = {
+  
+   
+   Owner = "DevOps team"
+   service = "backend"
+
+  }
+
+  }
+

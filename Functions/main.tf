@@ -1,6 +1,7 @@
 resource "aws_key_pair" "devopskey"{
 
 key_name = "devops-key"
+//public key should exist a file within the terraform folder 
 public_key = file("${path.module}/id_rsa.pub")
 
 

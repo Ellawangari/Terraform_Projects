@@ -1,19 +1,19 @@
-resource "aws_security_group" "dynamicsg" {
+# resource "aws_security_group" "dynamicsg"{
 
-  name        = "dynamic-sg"
-  description = "ingress rules"
+# name = "dynamic-sg"
+# description = "ingress rules"
 
-  dynamic "ingress" {
+# dynamic "ingress" {
 
-    for_each = var.sg_ports
-    content {
+# for_each = var.sg_ports
+# content {
 
-      from_port   = ingress.value
-      to_port     = ingress.value
-      protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
-    }
+#     from_port = port.value
+#     to_port = port.value
+#     protocol = "tcp"
+#     cidr_blocks =["0.0.0.0/0"]
+# }
 
-  }
+# }
 
-}
+# }

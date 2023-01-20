@@ -1,0 +1,25 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_iam_user.devuser (expand)" [label = "aws_iam_user.devuser", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] var.ami" [label = "var.ami", shape = "note"]
+		"[root] var.instances" [label = "var.instances", shape = "note"]
+		"[root] var.instancetype" [label = "var.instancetype", shape = "note"]
+		"[root] var.region" [label = "var.region", shape = "note"]
+		"[root] var.sg_ports" [label = "var.sg_ports", shape = "note"]
+		"[root] aws_iam_user.devuser (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] output.devuserarn (expand)" -> "[root] aws_iam_user.devuser (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_user.devuser (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" -> "[root] var.region"
+		"[root] root" -> "[root] local.time (expand)"
+		"[root] root" -> "[root] output.devuserarn (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] var.ami"
+		"[root] root" -> "[root] var.instances"
+		"[root] root" -> "[root] var.instancetype"
+		"[root] root" -> "[root] var.sg_ports"
+	}
+}
+

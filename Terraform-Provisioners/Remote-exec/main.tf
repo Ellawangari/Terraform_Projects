@@ -2,7 +2,9 @@ resource "aws_instance" "test-ec2" {
   //creating the instance
   instance_type = var.instance-type
   ami           = var.ami
-  key_name      = file("./terraform-prac.pem")
+  //key name
+  key_name      = "terraform-prac"
+
   vpc_security_group_ids = [aws_security_group.allowhttp.id]
 
   tags = {

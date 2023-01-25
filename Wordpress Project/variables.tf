@@ -35,7 +35,7 @@ variable "privatesg_ports" {
   type        = list(number)
   description = "list of inbound ports"
   //ports for ssh, http
-  default = [3306]
+  default = [22, 80]
 
 }
 

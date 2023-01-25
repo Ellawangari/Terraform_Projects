@@ -1,3 +1,4 @@
+//Security grup for public subnet
 resource "aws_security_group" "public-sg" {
   name        = "wordpress-sg"
   description = "allow ssh and http"
@@ -32,3 +33,5 @@ resource "aws_security_group" "public-sg" {
   }
 
 }
+
+//security group for private subnet

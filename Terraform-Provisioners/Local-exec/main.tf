@@ -24,7 +24,8 @@ resource "aws_instance" "test-ec2" {
 
 
  command = "echo ${self.private_ip} >> private_ips.txt"
-    
+ // if the provisioner fails it will still continue if on_failure = fail which is the default option then it will fail and mark the resource as tainted
+  on_failure = continue  
   }
 
 

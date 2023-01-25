@@ -1,11 +1,11 @@
 resource "aws_instance" "Wordpress-server" {
   //creating the instance
-  depends_on            = [aws_internet_gateway.public_gw]
+  depends_on            = [aws_internet_gateway.public-gw]
   instance_type         = var.instance-type
   ami                   = var.ami
   key_name              = "terraform-prac"
   subnet_id             = aws_subnet.public_subnet.id
-  vpc_security_group_id = [aws_security_group.public-sg.id]
+  vpc_security_group_ids = [aws_security_group.public-sg.id]
 
   tags = {
 

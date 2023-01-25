@@ -2,7 +2,7 @@
 resource "aws_security_group" "public-sg" {
   name        = "wordpress-sg"
   description = "allow ssh and http"
-  vpc_id = aws_vpc.wordpress-vpc.id
+  vpc_id      = aws_vpc.wordpress-vpc.id
 
 
   dynamic "ingress" {
@@ -38,14 +38,14 @@ resource "aws_security_group" "public-sg" {
 resource "aws_security_group" "private-sg" {
   name        = "db-sg"
   description = "allow port 3306"
-  vpc_id = aws_vpc.wordpress-vpc.id
+  vpc_id      = aws_vpc.wordpress-vpc.id
 
 
   dynamic "ingress" {
 
     for_each = var.privatesg_ports
     content {
-      
+
       description = "MYSQL port"
       from_port   = ingress.value
       to_port     = ingress.value

@@ -1,15 +1,15 @@
 resource "aws_vpc" "wordpress-vpc" {
 
- 
- cidr_block = "192.168.0.0/16"
- enable_dns_hostnames = true
+
+  cidr_block           = "192.168.0.0/16"
+  enable_dns_hostnames = true
 
 
- tags = {
+  tags = {
 
-Name = "wordpress-vpc"
+    Name = "wordpress-vpc"
 
- }
+  }
 
 }
 
@@ -19,15 +19,15 @@ Name = "wordpress-vpc"
 resource "aws_subnet" "public_subnet" {
 
 
-vpc_id = wordpress-vpc.id
-cidr_block = "192.168.2.0/24"
-map_public_ip_on_launch = true
+  vpc_id                  = aws_vpc.wordpress-vpc.id
+  cidr_block              = "192.168.2.0/24"
+  map_public_ip_on_launch = true
 
-tags ={
+  tags = {
 
 
     Name = "Public-Subnet"
-}
+  }
 }
 
 
@@ -36,13 +36,13 @@ tags ={
 resource "aws_subnet" "private_subnet" {
 
 
-vpc_id = wordpress-vpc.id
-cidr_block = "192.168.3.0/24"
-map_public_ip_on_launch = true
+  vpc_id                  = aws_vpc.wordpress-vpc.id
+  cidr_block              = "192.168.3.0/24"
+  map_public_ip_on_launch = true
 
-tags ={
+  tags = {
 
 
     Name = "Private-Subnet"
-}
+  }
 }

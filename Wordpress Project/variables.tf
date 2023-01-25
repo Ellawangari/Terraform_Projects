@@ -19,13 +19,23 @@ variable "instance-type" {
   default = "t2.micro"
 }
 
-//inbound rules ports
+//inbound rules ports for public sg
 variable "sg_ports" {
 
   type        = list(number)
   description = "list of inbound ports"
   //ports for ssh, http
   default = [22, 80]
+
+}
+
+//inbound rules ports for private sg
+variable "privatesg_ports" {
+
+  type        = list(number)
+  description = "list of inbound ports"
+  //ports for ssh, http
+  default = [3306]
 
 }
 

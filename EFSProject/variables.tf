@@ -20,7 +20,7 @@ variable "sg_ports" {
   type        = list(number)
   description = "list of inbound ports"
   //ports for ssh, http,https, efs
-  default     = [22, 80, 443,2049]
+  default = [22, 80, 443, 2049]
 
 }
 

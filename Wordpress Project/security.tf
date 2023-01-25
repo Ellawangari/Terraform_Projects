@@ -1,6 +1,8 @@
-resource "aws_security_group" "allowhttp" {
-  name        = "dynamic-sg"
-  description = "ingress rules"
+resource "aws_security_group" "public-sg" {
+  name        = "wordpress-sg"
+  description = "allow ssh and http"
+  vpc_id = aws_vpc.wordpress-vpc.id
+
 
   dynamic "ingress" {
 

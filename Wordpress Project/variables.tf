@@ -5,8 +5,13 @@ variable "region" {
 
 variable "ami" {
 
+  //ubuntu instance ami
+  //default = "ami-0778521d914d23bc1"
 
-  default = "ami-0778521d914d23bc1"
+  //RHEL8 instance ami
+  default = "ami-06640050dc3f556bb"
+
+
 }
 
 variable "instance-type" {
@@ -19,8 +24,8 @@ variable "sg_ports" {
 
   type        = list(number)
   description = "list of inbound ports"
-  //ports for ssh, http,https, efs
-  default = [22, 80, 443, 2049]
+  //ports for ssh, http
+  default = [22, 80]
 
 }
 

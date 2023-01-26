@@ -38,11 +38,21 @@ resource "aws_subnet" "private_subnet" {
 
   vpc_id                  = aws_vpc.wordpress-vpc.id
   cidr_block              = "192.168.3.0/24"
-  map_public_ip_on_launch = true
+
 
   tags = {
 
 
     Name = "Private-Subnet"
+  }
+}
+
+//Database subnet
+resource "aws_db_subnet_group" "default" {
+  name       = "mydb"
+  subnet_ids = [aws_subnet.public_subnet.id, aws_subnet.private_subnet.id]
+
+  tags = {
+    Name = "My DB subnet group"
   }
 }

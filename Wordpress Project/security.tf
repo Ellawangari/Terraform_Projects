@@ -28,6 +28,7 @@ resource "aws_security_group" "public-sg" {
       to_port     = egress.value
       protocol    = "-1"
       cidr_blocks = ["0.0.0.0/0"]
+    
     }
 
   }
@@ -51,21 +52,12 @@ resource "aws_security_group" "private-sg" {
       to_port     = ingress.value
       protocol    = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
+      source_security_group_id = aws_security_group.["public-sg"].id
+
     }
 
   }
-  //egress
-
-  dynamic "egress" {
-
-    for_each = var.egress_ports
-    content {
-
-      from_port   = 0
-      to_port     = egress.value
-      protocol    = "-1"
-      cidr_blocks = ["0.0.0.0/0"]
-    }
+  
 
   }
 

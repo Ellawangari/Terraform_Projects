@@ -8,7 +8,7 @@ resource "aws_db_instance" "Database" {
   storage_type           = "gp2"
   db_name                = "mydb"
   engine                 = "mysql"
-  engine_version         = "8.0"
+  engine_version         = "8.0."
   instance_class         = "db.t2.micro"
   username               = "admin"
   password               = "admin123"

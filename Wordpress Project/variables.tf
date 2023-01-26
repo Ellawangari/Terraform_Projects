@@ -33,9 +33,9 @@ variable "sg_ports" {
 variable "privatesg_ports" {
 
   type        = list(number)
-  description = "list of inbound ports"
+  description = "rds port"
   //ports for ssh, http
-  default = [22, 80]
+  default = [3306]
 
 }
 
@@ -44,7 +44,7 @@ variable "privatesg_ports" {
 variable "egress_ports" {
 
   type        = list(number)
-  description = "list of inbound ports"
+  description = "list of outbound ports"
   default     = [0]
 
 }

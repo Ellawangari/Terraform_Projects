@@ -42,8 +42,10 @@ resource "aws_instance" "Wordpress-server" {
 
 
 
-
-    command = "echo ${aws_instance.Wordpress-server.public_ip} >> public_ip.txt"
+   //Commands used when destroying local-exec files then run a terraform apply 
+    when = destroy
+    command = "echo 'Destroy-time provisioner'"
+    //command = "echo ${aws_instance.Wordpress-server.public_ip} >> public_ip.txt"
 
 
 

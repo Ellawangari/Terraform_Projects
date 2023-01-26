@@ -20,10 +20,13 @@ resource "aws_db_instance" "Database" {
 
 
 
+
   provisioner "local-exec" {
+  //Commands used when destroying local-exec files then run a terraform apply 
+    when = destroy
+    command = "echo 'Destroy-time provisioner'"
 
-
-    command = "echo ${aws_db_instance.Database.endpoint} >> db.txt"
+   // command = "echo ${aws_db_instance.Database.endpoint} >> db.txt"
   }
 
 

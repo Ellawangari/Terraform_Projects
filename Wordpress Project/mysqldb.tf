@@ -4,7 +4,7 @@ resource "aws_db_instance" "Database" {
 
 
   allocated_storage      = 20
-  max_allocated_storage   = 100
+  max_allocated_storage  = 100
   storage_type           = "gp2"
   db_name                = "mydb"
   engine                 = "mysql"
@@ -22,11 +22,11 @@ resource "aws_db_instance" "Database" {
 
 
   provisioner "local-exec" {
-  //Commands used when destroying local-exec files then run a terraform apply 
-    when = destroy
-    command = "echo 'Destroy-time provisioner'"
+    //Commands used when destroying local-exec files then run a terraform apply 
+    # when = destroy
+    # command = "echo 'Destroy-time provisioner'"
 
-   // command = "echo ${aws_db_instance.Database.endpoint} >> db.txt"
+    command = "echo ${aws_db_instance.Database.endpoint} >> db.txt"
   }
 
 

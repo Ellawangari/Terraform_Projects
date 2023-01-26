@@ -1,10 +1,10 @@
 resource "aws_instance" "Wordpress-server" {
   //creating the instance
-  depends_on            = [aws_internet_gateway.public-gw]
-  instance_type         = var.instance-type
-  ami                   = var.ami
-  key_name              = "terraform-prac"
-  subnet_id             = aws_subnet.public_subnet.id
+  depends_on             = [aws_internet_gateway.public-gw]
+  instance_type          = var.instance-type
+  ami                    = var.ami
+  key_name               = "terraform-prac"
+  subnet_id              = aws_subnet.public_subnet.id
   vpc_security_group_ids = [aws_security_group.public-sg.id]
 
   tags = {
@@ -42,10 +42,10 @@ resource "aws_instance" "Wordpress-server" {
 
 
 
-   //Commands used when destroying local-exec files then run a terraform apply 
-    when = destroy
-    command = "echo 'Destroy-time provisioner'"
-    //command = "echo ${aws_instance.Wordpress-server.public_ip} >> public_ip.txt"
+    //Commands used when destroying local-exec files then run a terraform apply 
+    # when = destroy
+    # command = "echo 'Destroy-time provisioner'"
+    command = "echo ${aws_instance.Wordpress-server.public_ip} >> public_ip.txt"
 
 
 

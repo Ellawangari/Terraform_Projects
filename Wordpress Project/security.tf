@@ -35,7 +35,6 @@ resource "aws_security_group" "public-sg" {
 
 }
 
-//security group for private subnet
 resource "aws_security_group" "private-sg" {
   name        = "db-sg"
   description = "allow port 3306"
@@ -47,18 +46,37 @@ resource "aws_security_group" "private-sg" {
     for_each = var.privatesg_ports
     content {
 
-      description = "MYSQL port"
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
-      source_security_group_id = aws_security_group.["public-sg"].id
-
     }
+
+  }
+  //egress
+
+
+
+}
+//security group for private subnet
+resource "aws_security_group_rule" "db-sg" {
+  description = "allow port 3306"
+  type = "ingress"
+  from_port   = 3306
+  to_port     = 3306
+  protocol    = "tcp"
+  //cidr_blocks = [aws_vpc.wordpress-vpc.cidr_block] 
+  security_group_id = "${aws_security_group.private-sg.id}"
+  source_security_group_id = "${aws_security_group.public-sg.id}"
+
+
+
+
+      
+    
 
   }
   
 
-  }
+  
 
-}

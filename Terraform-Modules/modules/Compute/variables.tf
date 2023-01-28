@@ -5,7 +5,7 @@ variable "key_name" {
 
 }
 
-variable "instancetype" {
+variable "instance-type" {
 
  description ="Instance types"
  type = string

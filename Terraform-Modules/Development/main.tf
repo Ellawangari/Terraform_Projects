@@ -9,3 +9,12 @@ module "Compute" {
   instance-type   = var.instance-type
 
 }
+
+module "Security" {
+
+  source         = "../modules/Security"
+
+  //This should fail since we have defined the use of locals
+ 
+
+}

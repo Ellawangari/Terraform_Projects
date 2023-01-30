@@ -1,3 +1,13 @@
+module "VPC" {
+
+  source         = "../VPC"
+
+
+ 
+
+}
+
+
 resource "aws_security_group" "allowhttp"{
   name = "dynamic-sg"
   description = "ingress rules"
@@ -10,7 +20,7 @@ resource "aws_security_group" "allowhttp"{
     from_port = ingress.value
     to_port = ingress.value
     protocol = "tcp"
-    cidr_blocks =["0.0.0.0/0"]
+    cidr_blocks = [module.VPC.vpccidrblock]
             }
 
 }
@@ -20,6 +30,6 @@ resource "aws_security_group" "allowhttp"{
 // locals help prevent values from being overridden in other files
 locals  {
 
-sg_ports =[22, 80, 443]
+sg_ports =[22]
 
 }

@@ -1,14 +1,14 @@
-resource "aws_instance" "jenkinsec2"{
+# resource "aws_instance" "jenkinsec2"{
 
-  instance_type = lookup(var.instance-type,terraform.workspace)
-  key_name = var.key_name
-  ami = var.jenkinsami
-
-
-  tags = {
+#   instance_type = lookup(var.instance-type,terraform.workspace)
+#   key_name = var.key_name
+#   ami = var.jenkinsami
 
 
-    Name = "Jenkins-Server"
-  }
+#   tags = {
 
-}
+
+#     Name = "Jenkins-Server"
+#   }
+
+# }

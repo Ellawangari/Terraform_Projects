@@ -21,18 +21,23 @@
 
 
 # }
-//VPC module 
+ //VPC module 
 
-module "VPC" {
-
-  source = "../modules/VPC"
-
+ module "VPC" {
+ source = "../modules/VPC"
 
 
 
-}
 
+ }
 
+//Using github as our source module
+
+# module "VPC" {   
+
+# source = "https://github.com/Ellawangari/Terraform_Projects.git"
+
+# }
 
 
 

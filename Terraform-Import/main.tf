@@ -1,15 +1,36 @@
-resource "aws_instance" "webserver"{
+# resource "aws_instance" "webserver"{
 
-  instance_type = var.instance_type
-  key_name = var.key_name
-  ami = var.jenkinsami
-   vpc_security_group_ids = "sg-0d192e9fb3eb83421"
-
-
-  tags = {
+#   instance_type = var.instance_type
+#   key_name = var.key_name
+#   ami = var.ami
 
 
-    Name = "terraformimport-server"
+
+#   tags = {
+
+
+#     Name = "import-server"
+#   }
+
+# }
+
+//provision first eip on the us-east region
+resource "aws_eip" "testserverip" {
+
+  vpc = "true"
+
+  tags ={
+
+    Name : "east-eip"
   }
+}
+//provision first eip on the us-west region
+resource "aws_eip" "testserverip2" {
 
+  vpc = "true"
+  provider = "aws.west"
+  tags ={
+
+    Name : "west-eip"
+  }
 }

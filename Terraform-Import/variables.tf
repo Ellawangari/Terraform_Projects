@@ -5,7 +5,13 @@ variable "region" {
 
 
 }
+variable "aliasregion" {
 
+
+  default = "us-west-1"
+
+
+}
 variable "key_name" {
 
   description = "Key name"
@@ -13,7 +19,7 @@ variable "key_name" {
 
 }
 
-variable "instance-type" {
+variable "instance_type" {
 
   description = "Instance types"
   type        = string

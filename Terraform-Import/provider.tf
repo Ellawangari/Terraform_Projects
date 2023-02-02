@@ -11,8 +11,17 @@ terraform {
   required_version = ">=0.12"
 }
 
+//first region
 provider "aws" {
 
   region = var.region
+
+}
+//second region 
+provider "aws" {
+
+//using alias allows us to provide two provider configurations
+  alias = "west"
+  region = var.aliasregion
 
 }

@@ -24,4 +24,8 @@ provider "aws" {
   alias = "west"
   region = var.aliasregion
 
+  //to use a diffrent account profile to launch eip one has to have two access key both configure on aws cli and use their profile name to launch resources
+
+  profile = "account-02"
+
 }
